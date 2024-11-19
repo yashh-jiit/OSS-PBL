@@ -13,6 +13,44 @@ import time
 
 # data = fetch_data('BTC-USD', '2018-01-01', '2023-01-01')
 
+# List of cryptocurrency abbreviations
+cryptos = [
+    "AUR",   # Auroracoin
+    "BCH",   # Bitcoin Cash
+    "BTC",   # Bitcoin
+    "DASH",  # Dash
+    "DOGE",  # Dogecoin
+    "EOS",   # EOS.IO
+    "ETC",   # Ethereum Classic
+    "ETH",   # Ether (Ethereum)
+    "GRC",   # Gridcoin
+    "LTC",   # Litecoin
+    "MZC",   # Mazacoin
+    "NEO",   # Neo
+    "NMC",   # Namecoin
+    "Nxt",   # NXT
+    "POT",   # PotCoin
+    "PPC",   # Peercoin
+    "TIT",   # Titcoin
+    "USDC",  # USD Coin
+    "USDT",  # Tether
+    "VTC",   # Vertcoin
+    "XEM",   # NEM
+    "XLM",   # Stellar
+    "XMR",   # Monero
+    "XPM",   # Primecoin
+    "XRP",   # Ripple
+    "XVG",   # Verge
+    "ZEC"    # Zcash
+]
+
+# Add "-USD" to each abbreviation
+yfinance_symbols = [f"{crypto}-USD" for crypto in cryptos]
+
+# Print the resulting array
+# print(yfinance_symbols)
+
+
 start_date = "2019-01-01"
 end_date = "2024-01-01"
 
@@ -25,7 +63,8 @@ end_date = "2024-01-01"
 #     st.error(f"Error: {e}")
 
 st.title('Cryptocurrency Trend Prediction')
-crypto_symbol = st.text_input('Enter Stock Ticker (It can be searched from Yahoo Finance - Enter crypto with -USD)', 'BTC-USD')
+# crypto_symbol = st.text_input('Enter Stock Ticker (It can be searched from Yahoo Finance - Enter crypto with -USD)', 'BTC-USD')
+crypto_symbol = st.multiselect("Choose one or more options:", yfinance_symbols)
 
 df = yf.download(crypto_symbol, start=start_date, end=end_date)
 df.columns = df.columns.get_level_values(0)
