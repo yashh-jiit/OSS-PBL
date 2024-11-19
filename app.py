@@ -67,11 +67,11 @@ st.title('Cryptocurrency Trend Prediction')
 crypto_symbol = st.selectbox("Choose cryptocurrency:", yfinance_symbols + ["Other"], index=2)
 
 
-if selected_option == "Other":
+if crypto_symbol == "Other":
     custom_option = st.text_input("Type abbreviation:")
-    final_selection = custom_option if custom_option else "No option entered"
+    crypto_symbol = custom_option if custom_option else "No option entered"
 else:
-    final_selection = selected_option
+    crypto_symbol = crypto_symbol
 
 
 df = yf.download(crypto_symbol, start=start_date, end=end_date)
