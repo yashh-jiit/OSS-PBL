@@ -64,7 +64,7 @@ end_date = "2024-01-01"
 
 st.title('Cryptocurrency Trend Prediction')
 # crypto_symbol = st.text_input('Enter Stock Ticker (It can be searched from Yahoo Finance - Enter crypto with -USD)', 'BTC-USD')
-crypto_symbol = st.selectbox("Choose one or more options:", yfinance_symbols, index=0)
+crypto_symbol = st.selectbox("Choose cryptocurrency:", yfinance_symbols, index=0)
 
 df = yf.download(crypto_symbol, start=start_date, end=end_date)
 df.columns = df.columns.get_level_values(0)
