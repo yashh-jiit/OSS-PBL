@@ -68,7 +68,7 @@ crypto_symbol = st.selectbox("Choose cryptocurrency:", yfinance_symbols + ["Othe
 
 
 if crypto_symbol == "Other":
-    custom_option = st.text_input("Type abbreviation:")
+    custom_option = st.text_input("Type abbreviation:", value="AAPL")
     crypto_symbol = custom_option if custom_option else "No option entered"
 else:
     crypto_symbol = crypto_symbol
